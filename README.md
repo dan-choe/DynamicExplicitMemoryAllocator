@@ -10,8 +10,8 @@ Evenytime, when you allocate or reallocate some space, you can see the block siz
 The header is defined as **a single 64-bit quadword with the block size and allocated bit**.
 Note: 1 full memory row is 64-bits in size (8 bytes = 1 quad word in x86_64)
 
-Each page size is **4096 bytes**.
-You can't allocate more than 4 pages such that the maximum size is 4096 *4 bytes (=16,384bytes).
+Each page size is **4096 bytes**. If it needs a page, it automatically create one more page.
+However, you can't allocate more than 4 pages such that the maximum size is 4096 *4 bytes (=16,384bytes).
 
 Free blocks will be inserted into the list in sorted ascending address order.
 
@@ -25,11 +25,18 @@ Move the current location to the directory on terminal.
 Then, type 'make' on terminal to make the executional file.
 Run the file (Ex. bin/main)
 
+![compile](https://github.com/dan-choe/DynamicExplicitMemoryAllocator/blob/master/Screenshot1.png "How to compile")
+
 It will show the allocation blocks as requested in main.c file.
 You can customize whatever you want to allocate the different sizes.
 
 ### Screenshots
-(updating ...)
+
+![malloc](https://github.com/dan-choe/DynamicExplicitMemoryAllocator/blob/master/Screenshot1.png "malloc")
+
+![malloc](https://github.com/dan-choe/DynamicExplicitMemoryAllocator/blob/master/screenshot2.png "malloc")
+
+![realloc](https://github.com/dan-choe/DynamicExplicitMemoryAllocator/blob/master/Screenshot3.png "realloc")
 
 ### Unit testing in C
 
