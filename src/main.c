@@ -68,6 +68,48 @@ int main(int argc, char *argv[]) {
     sf_blockprint(value1);
     press_to_cont();
 
+    printf("=== Test2: Allocation test ===\n");
+    // Test #1: Allocate an integer
+    int *t2_1 = sf_malloc(1);
+    int *t2_2 = sf_malloc(20);
+    int *t2_3 = sf_malloc(1);
+    int *t2_4 = sf_malloc(1);
+    int *t2_5 = sf_malloc(1);
+
+    sf_varprint(t2_1);
+    sf_varprint(t2_2);
+    sf_varprint(t2_3);
+    sf_varprint(t2_4);
+    sf_varprint(t2_5);
+    sf_varprint(((void*)freelist_head + 8));
+
+    printf("=== Test3: Simply Reallocation test ===\n");
+
+    int *t3_1 = sf_malloc(48);
+    int *t3_2 = sf_malloc(100);
+
+    sf_varprint(t3_1);
+    sf_varprint(t3_2);
+
+    sf_free(t3_2);
+
+    sf_varprint(t3_1);
+    sf_varprint(((void*)freelist_head + 8));
+
+    sf_realloc(t3_1, 60);
+
+    sf_varprint(t3_1);
+    sf_varprint(((void*)freelist_head + 8));
+
+
+    // int *value1 = sf_malloc(sizeof(int));
+    // null_check(value1, sizeof(int));
+    // payload_check(value1);
+    // // Print out the allocator block
+    // sf_blockprint(value1);
+    // press_to_cont();
+
+    /*
     // Now assign a value
     printf("=== Test2: Assignment test ===\n");
     info("Attempting to assign value1 = %d\n", VALUE1_VALUE);
@@ -109,6 +151,8 @@ int main(int argc, char *argv[]) {
     void *memory = sf_malloc(8192);
     sf_free(memory);
     press_to_cont();
+
+    */
 
     sf_mem_fini();
 
